@@ -72,23 +72,20 @@ with gr.Blocks(title="🧠 Multi-Agent README Generator") as demo:
     generate_btn.click(fn=run_pipeline, inputs=[github_input, image_input], outputs=readme_output)
     feedback_btn.click(fn=apply_feedback, inputs=feedback_box, outputs=readme_output)
     export_btn.click(fn=export_readme, outputs=export_output)
-from agents.push_to_github import GitHubPushAgent
-import os
 
-github_token = os.getenv("GITHUB_TOKEN")
-pusher = GitHubPushAgent(github_token)
-
-def push_to_github_ui(github_url):
-    final_msg = global_state.get("final_msg")
-    if not final_msg:
-        return "❌ No final README to push"
-    response = pusher.run(github_url, final_msg)
-    return response.content
-
-push_btn = gr.Button("🚀 Push to GitHub")
-push_output = gr.Textbox(label="🔐 GitHub Push Status")
-
-push_btn.click(fn=push_to_github_ui, inputs=github_input, outputs=push_output)
+    push_btn = gr.Button("🚀 Push to GitHub")
+    push_output = gr.Textbox(label="🔐 GitHub Push Status")
+    from agents.push_to_github import GitHubPushAgent
+    import os
+    github_token = os.getenv("GITHUB_TOKEN")
+    pusher = GitHubPushAgent(github_token)
+    def push_to_github_ui(github_url):
+        final_msg = global_state.get("final_msg")
+        if not final_msg:
+            return "❌ No final README to push"
+        response = pusher.run(github_url, final_msg)
+        return response.content
+    push_btn.click(fn=push_to_github_ui, inputs=github_input, outputs=push_output)
 
 # Launch
 if __name__ == "__main__":
