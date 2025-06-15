@@ -1,8 +1,8 @@
-from core.adk_agent import ADKAgent
+from core.adk_agent import ADK
 from core.a2a_protocol import A2AMessage
 
 
-class FeedbackAgent(ADKAgent):
+class FeedbackAgent(ADK):
     def __init__(self):
         super().__init__()
 
@@ -13,7 +13,6 @@ You're an AI README editor.
 Here is the original README:
 {original_readme}
 
-kotlin
 Copy
 Edit
 
