@@ -1,11 +1,11 @@
 import os
-from core.adk_agent import ADKAgent
+from core.adk_agent import ADK
 from core.a2a_protocol import A2AMessage
 import google.generativeai as genai
 from PIL import Image
 
 
-class VisionAgent:
+class VisionAgent(ADK):
     def __init__(self, model_name="gemini-2.5-flash"):
         self.api_key = os.getenv("GOOGLE_API_KEY")
         if not self.api_key:
