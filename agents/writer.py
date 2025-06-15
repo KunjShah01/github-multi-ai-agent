@@ -1,7 +1,7 @@
-from core.adk_agent import ADKAgent
+from core.adk_agent import ADK
 from core.a2a_protocol import A2AMessage
 
-class WriterAgent(ADKAgent):
+class WriterAgent(ADK):
     def __init__(self):
         super().__init__()
 
