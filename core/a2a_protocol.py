@@ -3,7 +3,7 @@ from datetime import datetime
 import uuid
 
 class A2AMessage:
-    def _init_(self, from_agent, to_agent, message_type, content):
+    def __init__(self, from_agent, to_agent, message_type, content):
         self.from_agent = from_agent
         self.to_agent = to_agent
         self.message_type = message_type
@@ -40,4 +40,4 @@ class A2AMessage:
 
     @staticmethod
     def from_json(json_str):
-        return A2AMessage.from_dict(json.loads(json_str))        
+        return A2AMessage.from_dict(json.loads(json_str))
