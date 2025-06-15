@@ -83,13 +83,6 @@ python app.py
 
 ---
 
-## 🌟 Demo
-
-> ![Demo GIF] 
->
-> *Generating a README in seconds!*
-
----
 
 ## 🛡 License
 
